@@ -6,6 +6,6 @@ urlpatterns = [
     path('',views.home, name="home"),
     path('explore/',views.explore, name="explore"),
     path('collection/',views.collection, name="collection"),
-   #path('collection/explore/',views.explore, name="explore"),
-    #path('explore/collection/',views.collection, name="collection"),
+    path('register/',views.register, name="register"),
+
 ]
