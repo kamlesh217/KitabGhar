@@ -1,5 +1,6 @@
 from http.client import HTTPResponse
 from django.shortcuts import render
+from .models import book_store
 
 # Create your views here.
 def home(request):
@@ -9,7 +10,10 @@ def store(request):
     return render(request, 'store.html')
 
 def explore(request):
-    return render(request, 'explore.html')
+
+    store=book_store.objects.all()
+
+    return render(request, 'htm.html', {'books':store})
 
 def collection(request):
     return render(request, 'collection.html')
