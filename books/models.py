@@ -9,5 +9,5 @@ class book_store(models.Model):
     book_image=models.ImageField(upload_to="pic")
     book_pdf=models.FileField(upload_to='pdfs/')
     book_publisher=models.CharField(max_length=50)
-    book_publish=models.DateField()
+    book_publish=models.DateField(default='2000-01-01')
 

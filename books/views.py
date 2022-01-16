@@ -6,9 +6,6 @@ from .models import book_store
 def home(request):
     return render(request, 'home.html')
 
-def store(request):
-    return render(request, 'store.html')
-
 def explore(request):
 
     store=book_store.objects.all()
@@ -16,10 +13,16 @@ def explore(request):
     return render(request, 'explore.html', {'books':store})
 
 def collection(request):
-    return render(request, 'collection.html')
+    store=book_store.objects.all()
+
+    return render(request, 'collection.html', {'books':store} )
 
 def register(request):
     return render(request, 'register.html')
 
 def dashboard(request):
     return render(request, 'DashBoard.html')
+
+def account(request):
+    return render(request, 'account.html')
+
