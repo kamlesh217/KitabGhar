@@ -23,15 +23,20 @@ def home(request):
         return render(request, 'home.html')
 
 def explore(request):
+    if request.user.is_authenticated:
+        store=book_store.objects.all()
+        return render(request, 'explore.html', {'books':store})
+    else:
+        return redirect('/')
 
-    store=book_store.objects.all()
-
-    return render(request, 'explore.html', {'books':store})
+    
 
 def collection(request):
-    store=book_store.objects.all()
-
-    return render(request, 'collection.html', {'books':store} )
+    if request.user.is_authenticated:
+        store=book_store.objects.all()
+        return render(request, 'collection.html', {'books':store} )
+    else:
+        return redirect('/')
 
 def register(request):
     
@@ -51,23 +56,19 @@ def register(request):
         return render(request, 'register.html')
 
 def dashboard(request):
-    return render(request, 'DashBoard.html')
+    if request.user.is_authenticated:
+        return render(request, 'DashBoard.html' )
+    else:
+        return redirect('/')
+    
 
 def account(request):
-    return render(request, 'account.html')
+    if request.user.is_authenticated:
+        return render(request, 'Account.html' )
+    else:
+        return redirect('/')
+    
 
 def logout(request):
     auth.logout(request)
     return redirect('/')
-
-def cor(request):
-    if request.method=="POST":
-        name=request.POST['name']
-        email=request.POST['email']
-        password=request.POST['password']
-    
-    
-
-
-
-    return redirect('/account')
