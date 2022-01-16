@@ -90,35 +90,47 @@
 			<div class="container">
 				<div class="row">
 					<div class="col text-center">
-						<div class="section_subtitle">Take a good book to bed with you-books do not snore</div>
+						<div class="section_subtitle">simply amazing places</div>
 						<div class="section_title">
-							<h2>The Books We Have</h2>
+							<h2>Popular Destinations</h2>
 						</div>
 					</div>
 				</div>
 				<div class="row destinations_row">
 					<div class="col">
 						<div class="destinations_container item_grid">
-						
-              {% for book in books %}
-              <!-- Destination -->
+							<!-- Destination -->
 							<div class="destination item">
 								<div class="destination_image">
-									<img src="{{book.book_image.url}}" height="150" width="120" alt="">
+									<img src="{{baseUrl}}/{{dest.img}}" alt="">
+									<div class="spec_offer text-center"><a href="#">Special Offer</a></div>
 								</div>
 								<div class="destination_content">
-									<div class="destination_title"><a href="destinations.html">{{book.book_name}}</a>
+									<div class="destination_title"><a href="destinations.html">{{dest.name}}</a>
 									</div>
 									<div class="destination_subtitle">
-										<p style="font-size: 1vw; color:grey; margin-bottom: .05px;">{{book.book_auth}}</p>
-                    <p style="font-size: 1vw; color:grey; margin-bottom: .05px;">Publish on {{book.book_publish}} by {{book.book.publisher}}</p>
-                    <p style="font-size: 1vw; color:grey; margin-bottom: .1px;">{{book.book_page}} pages</p>
+										<p>{{dest.desc}}</p>
 									</div>
-									<button type="button" class="btn btn-secondary btn-sm" style="margin:2px;" >Add to Collection</button>
-                  <button type="button" class="btn btn-secondary btn-sm" >Comment</button>
+									<div class="destination_price">From ${{dest.price}}</div>
 								</div>
 							</div>
-              {%endfor%}
+
+                            <!-- Destination -->
+							<div class="destination item">
+								<div class="destination_image">
+									<img src="{{baseUrl}}/{{dest.img}}" alt="">
+									<div class="spec_offer text-center"><a href="#">Special Offer</a></div>
+								</div>
+								<div class="destination_content">
+									<div class="destination_title"><a href="destinations.html">{{dest.name}}</a>
+									</div>
+									<div class="destination_subtitle">
+										<p>{{dest.desc}}</p>
+									</div>
+									<div class="destination_price">From ${{dest.price}}</div>
+								</div>
+							</div>
+
                             
 						</div>
 					</div>

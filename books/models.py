@@ -8,7 +8,6 @@ class book_store(models.Model):
     book_page=models.IntegerField()
     book_image=models.ImageField(upload_to="pic")
     book_pdf=models.FileField(upload_to='pdfs/')
-    book_publish=models.CharField(max_length=50)
-
-#book_publish=models.DateField(("01/01/2000"), auto_now=False, auto_now_add=False)
+    book_publisher=models.CharField(max_length=50)
+    book_publish=models.DateField()
 

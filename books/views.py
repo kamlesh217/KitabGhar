@@ -13,10 +13,13 @@ def explore(request):
 
     store=book_store.objects.all()
 
-    return render(request, 'htm.html', {'books':store})
+    return render(request, 'explore.html', {'books':store})
 
 def collection(request):
     return render(request, 'collection.html')
 
 def register(request):
     return render(request, 'register.html')
+
+def dashboard(request):
+    return render(request, 'DashBoard.html')
