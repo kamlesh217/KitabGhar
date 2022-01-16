@@ -7,6 +7,10 @@ urlpatterns = [
     path('explore/',views.explore, name="explore"),
     path('collection/',views.collection, name="collection"),
     path('register/',views.register, name="register"),
+    path('register/register',views.register, name="register"),
     path('dashboard/',views.dashboard, name='dashboard'),
+    path('login',views.dashboard, name='dashboard'),
     path('account/',views.account, name='account'),
+    path('logout',views.logout, name='logout'),
+    path('account/cor', views.cor, name="cor")
 ]
