@@ -23,20 +23,22 @@ def home(request):
         return render(request, 'home.html')
 
 def explore(request):
-    if request.user.is_authenticated:
+    if request.user.is_anonymous:
+        return redirect('/')
+        
+    else:
         store=book_store.objects.all()
         return render(request, 'explore.html', {'books':store})
-    else:
-        return redirect('/')
+        
 
     
 
 def collection(request):
-    if request.user.is_authenticated:
+    if request.user.is_anonymous:
+        return redirect('/')
+    else:
         store=book_store.objects.all()
         return render(request, 'collection.html', {'books':store} )
-    else:
-        return redirect('/')
 
 def register(request):
     
@@ -56,17 +58,17 @@ def register(request):
         return render(request, 'register.html')
 
 def dashboard(request):
-    if request.user.is_authenticated:
-        return render(request, 'DashBoard.html' )
-    else:
+    if request.user.is_anonymous:
         return redirect('/')
+    else:
+        return render(request, 'DashBoard.html' )
     
 
 def account(request):
-    if request.user.is_authenticated:
-        return render(request, 'Account.html' )
-    else:
+    if request.user.is_anonymous:
         return redirect('/')
+    else:
+        return render(request, 'Account.html' )
     
 
 def logout(request):
