@@ -34,11 +34,10 @@
 								<nav class="main_nav">
 									<ul class="d-flex flex-row align-items-start justify-content-start">
 										{% if user.is_authenticated %}
-										<li class="active"> hi, {{user.first_name}}</li>
+										<li><a href="/account"> hi, {{user.first_name}}</a></li>
 										{%endif%}
 										<li class="active"><a href="/collection">My Collection</a></li>
 										<li><a href="/explore">Explore</a></li>
-										<li><a href="/account">Account</a></li>
 										<li><a href="/logout">Logout</a></li>
 									</ul>
 								</nav>

@@ -33,12 +33,11 @@
 								<div class="logo"><a href="/dashboard">KitabGhar</a></div>
 								<nav class="main_nav">
 									<ul class="d-flex flex-row align-items-start justify-content-start">
-										{% if user.is_authenticated %}
-										<li class="active"> hi, {{user.first_name}}</li>
-										{%endif%}
+										
+										<li ><a href="/account"> hi, {{user.first_name}}</a></li>
+										
 										<li><a href="/collection">My Collection</a></li>
 										<li><a href="/explore">Explore</a></li>
-										<li class="active"><a href="/account">Account</a></li>
 										<li><a href="/logout">Logout</a></li>
 									</ul>
 								</nav>
@@ -67,7 +66,7 @@
 					<!-- Slide -->
 					<div class="owl-item">
 						<div class="background_image"
-							style="background-image:url({% static '7.jpg' %})"></div>
+							style="background-image:url({% static '25.jpg' %})"></div>
 						<div class="home_slider_content_container">
 							<div class="container">
 								<div class="row">
@@ -98,7 +97,9 @@
 									<div
 										class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
 										
-										<input type="text" name='name' class="search_input search_input_1" placeholder={{user.first_name}}
+										<input type="text" name='fname' class="search_input search_input_1" placeholder={{user.first_name}}
+											required="required"><br>
+											<input type="text" name="lname" class="search_input search_input_1" placeholder={{user.last_name}}
 											required="required"><br>
                                             <input type="email" name='email' class="search_input search_input_1" placeholder={{user.email}}
 											required="required">

@@ -1,10 +1,8 @@
-{% load static %}
-{% static "images" as baseUrl %}
 <!DOCTYPE html>
 <html lang="en">
-
+{% load static %}
+{% static "images" as baseUrl %}
 <head>
-	<title>KitabGhar</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="Travello template project">
@@ -16,10 +14,9 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles.css' %}">
 	<link rel="stylesheet" type="text/css" href="{% static 'styles/responsive.css' %}">
+	<title> KitabGhar </title>
 </head>
-
 <body>
-
 	<div class="super_container">
 
 		<!-- Header -->
@@ -33,6 +30,9 @@
 								<div class="logo"><a href="/">KitabGhar</a></div>
 								<nav class="main_nav">
 									<ul class="d-flex flex-row align-items-start justify-content-start">
+										{% if user.is_authenticated %}
+										<li class="active"> hi, {{user.first_name}}</li>
+										{%endif%}
 									</ul>
 								</nav>
                                 <div class="header_phone ml-auto" style ="color:black;">Call us: +91-8094569715</div>
@@ -96,7 +96,7 @@
 											required="required">
 										<input type="password" name="password" class="search_input search_input_2" placeholder="Password"
 											required="required">
-										<button type="submit" class="home_search_button"> <a href='/'>Login</a></button>
+										<button class="home_search_button" type="submit">Login</button>
 										<button class="home_search_button"><a href="/register">Register</a></button>
 									</div>
 								</form>
