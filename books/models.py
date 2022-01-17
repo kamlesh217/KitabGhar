@@ -11,3 +11,8 @@ class book_store(models.Model):
     book_publisher=models.CharField(max_length=50)
     book_publish=models.DateField(default='2000-01-01')
 
+class book_collection(models.Model):
+    username=models.CharField(max_length=50)
+    book_name=models.CharField(max_length=50)
+
+

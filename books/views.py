@@ -1,7 +1,7 @@
 
 from http.client import HTTPResponse
 from django.shortcuts import render, redirect
-from .models import book_store
+from .models import book_collection, book_store
 from django.contrib.auth.models import User, auth
 from django.contrib.auth import logout, login, authenticate
 
@@ -12,7 +12,6 @@ def home(request):
         username = request.POST['username']
         password=request.POST['password']
         user=authenticate(username=username, password=password)
-        print(user)
         if user is not None:
             login(request, user)
             return redirect('/dashboard')
@@ -26,8 +25,20 @@ def home(request):
 
 def explore(request):
     if request.user.is_authenticated:
-        store=book_store.objects.all()
-        return render(request, 'explore.html', {'books':store})
+        if request.method=='POST':
+            name=request.user.username
+            book_name=request.POST.get('book')
+            
+
+
+
+
+
+            store=book_store.objects.all()
+            return render(request, 'explore.html', {'books':store})
+        else:
+            store=book_store.objects.all()
+            return render(request, 'explore.html', {'books':store})
     else:
         return redirect('/')
         
@@ -36,8 +47,8 @@ def explore(request):
 
 def collection(request):
     if request.user.is_authenticated:
-        store=book_store.objects.all()
-        return render(request, 'collection.html', {'books':store} )
+        collect=book_collection.objects.all()
+        return render(request, 'collection.html', {'books':collect} )
         
     else:
         return redirect('/')
@@ -79,3 +90,22 @@ def account(request):
 def logoutuser(request):
     logout(request)
     return redirect('/')
+
+def remove(request):
+    if request.method=='POST':
+        user="dsa"
+   
+    return redirect('/collection')
+
+def comment(request):
+    if request.method=='POST':
+        user="dsa"
+   
+    return redirect('/collection')
+
+def add(request):
+    if request.method=='POST':
+        user="dsa"
+
+    
+    return redirect('/explore')
