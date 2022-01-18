@@ -28,12 +28,6 @@ def explore(request):
         if request.method=='POST':
             name=request.user.username
             book_name=request.POST.get('book')
-            
-
-
-
-
-
             store=book_store.objects.all()
             return render(request, 'explore.html', {'books':store})
         else:
@@ -108,4 +102,16 @@ def add(request):
         user="dsa"
 
     
+    return redirect('/explore')
+
+def pdf(request):
+    print(45)
+    if request.method=="POST":
+        print(1)
+        name=request.POST.get('book')
+        print(name)
+        pdf=book_store.objects.filter(book_name=name)
+        print(pdf)
+        return render(request, 'pd.html', {'books': pdf})
+
     return redirect('/explore')

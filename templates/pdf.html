@@ -1,12 +1,16 @@
+{% load static %}
+{% static "images" as baseUrl %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>book</title>
+    <title>dfg</title>
 </head>
 <body>
-    
+    {% for book in books %}
+    <img  src="{{book.book_image.url}}" width="35%" height="300px">
+    {% endfor %}
 </body>
 </html>

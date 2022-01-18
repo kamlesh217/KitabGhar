@@ -4,7 +4,7 @@
 <html lang="en">
 
 <head>
-	<title>Explore</title>
+	<title>DashBoard</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="description" content="Travello template project">
@@ -33,9 +33,9 @@
 								<div class="logo"><a href="/dashboard">KitabGhar</a></div>
 								<nav class="main_nav">
 									<ul class="d-flex flex-row align-items-start justify-content-start">
-										<li ><a href="/account"> hi, {{user.first_name}}</a></li>
-										<li ><a href="/collection">My Collection</a></li>
-										<li class="active"><a href="/explore">Explore</a></li>
+										<li class="active"><a href="/account"> hi, {{user.first_name}}</a></li>
+										<li><a href="/collection">My Collection</a></li>
+										<li><a href="/explore">Explore</a></li>
 									
 										<li><a href="/logout">Logout</a></li>
 									</ul>
@@ -65,17 +65,17 @@
 					<!-- Slide -->
 					<div class="owl-item">
 						<div class="background_image"
-							style="background-image:url({% static '5.jpg' %})"></div>
+							style="background-image:url({% static '8.jpg' %})"></div>
 						<div class="home_slider_content_container">
 							<div class="container">
 								<div class="row">
 									<div class="col">
 										<div class="home_slider_content">
 											<div class="home_title">
-												<div class="section_subtitle">Joan Didion</div><br>
-												<h3 style="color:white;">"We tell ourselves stories in order to live."</h3>
+												<div class="section_subtitle">Alice Hoffman</div><br>
+												<h3 style="color:white">“Books may well be the only true magic.”</h3>
 											</div>
-										</div> 
+										</div>
 									</div>
 								</div>
 							</div>
@@ -89,54 +89,9 @@
 
         <!-- Destinations -->
 
-		<div class="destinations" id="destinations">
-			<div class="container">
-				<div class="row">
-					<div class="col text-center">
-						<div class="section_subtitle">Take a good book to bed with you-books do not snore</div>
-						<div class="section_title">
-							<h2>The Books We Have</h2>
-						</div>
-					</div>
-				</div>
-				<div class="row destinations_row">
-					<div class="col">
-						<div class="destinations_container item_grid">
-						
-              {% for book in books %}
-              <!-- Destination -->
-			  <form action="/add" method='post'>
-				  {% csrf_token %}
-							<div class="destination item">
-								<div class="destination_image">
-									<img src="{{book.book_image.url}}" height="150" width="120" alt="">
-								</div>
-								<div class="destination_content">
-									<div class="destination_title" style="color:black;"><a>{{book.book_name}}</a>
-										
-									</div>
-									<div class="destination_subtitle">
-									<p style="font-size: 1vw; color:grey; margin-bottom: .05px;">{{book.book_auth}}</p>
-                    				<p style="font-size: 1vw; color:grey; margin-bottom: .05px;">Publish on {{book.book_publish}} by {{book.book.publisher}}</p>
-                    				<p style="font-size: 1vw; color:grey; margin-bottom: .1px;">{{book.book_page}} pages</p>
-									</div>
-									<button type="submit" class="btn btn-secondary btn-sm" style="margin:2px;float:left;" > Add to Collection</button>
-									</form>
-									<form action="/pdf" method='post'>
-										{% csrf_token %}
-									<input type = "hidden" name ='book' value="{{book.book_name}}"/>
-									<button type="submit" class="btn btn-secondary btn-sm" style="margin:2px;">open</button> 
-									</form>
-								</div>
-							</div>
-						
-              {%endfor%}
-                            
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		{% for book in books %}
+    	<img  src="{{book.book_image.url}}" width="35%" height="300px">
+    	{% endfor %}
 
 						<script src="{% static 'js/jquery-3.2.1.min.js' %}">
 						</script>
