@@ -112,6 +112,6 @@ def pdf(request):
         print(name)
         pdf=book_store.objects.filter(book_name=name)
         print(pdf)
-        return render(request, 'pd.html', {'books': pdf})
+        return render(request, 'pdf.html', {'books': pdf})
 
     return redirect('/explore')
