@@ -108,7 +108,7 @@ def pdf(request):
     print(45)
     if request.method=="POST":
         print(1)
-        name=request.POST.get('book')
+        name=request.POST['book']
         print(name)
         pdf=book_store.objects.filter(book_name=name)
         print(pdf)
