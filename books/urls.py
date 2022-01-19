@@ -13,6 +13,6 @@ urlpatterns = [
     path('logout',views.logoutuser, name='logout'),
     path('remove',views.remove,name='remove'),
     path('comment',views.comment,name='comment'),
-    path('add',views.explore,name='add'),
+    path('add',views.add,name='add'),
     path('pdf', views.pdf, name="view pdf")
 ]

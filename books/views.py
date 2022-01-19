@@ -25,14 +25,8 @@ def home(request):
 
 def explore(request):
     if request.user.is_authenticated:
-        if request.method=='POST':
-            name=request.user.username
-            book_name=request.POST.get('book')
-            store=book_store.objects.all()
-            return render(request, 'explore.html', {'books':store})
-        else:
-            store=book_store.objects.all()
-            return render(request, 'explore.html', {'books':store})
+        store=book_store.objects.all()
+        return render(request, 'explore.html', {'books':store})
     else:
         return redirect('/')
         
@@ -41,9 +35,9 @@ def explore(request):
 
 def collection(request):
     if request.user.is_authenticated:
-        collect=book_collection.objects.all()
+        collect=book_collection.objects.filter(username=request.user.username)
+        print(collect)
         return render(request, 'collection.html', {'books':collect} )
-        
     else:
         return redirect('/')
 
@@ -87,8 +81,10 @@ def logoutuser(request):
 
 def remove(request):
     if request.method=='POST':
-        user="dsa"
-   
+        name=request.user.username
+        objs=request.POST.get('book')
+        book=book_collection.objects.filter(username=name, book_name=objs).delete()
+        return collection(request)
     return redirect('/collection')
 
 def comment(request):
@@ -99,19 +95,20 @@ def comment(request):
 
 def add(request):
     if request.method=='POST':
-        user="dsa"
-
-    
+        name=request.user.username
+        objs=request.POST.get('book')
+        if book_collection.objects.filter(book_name=objs).exists():
+            print(True)
+            return explore(request)
+        else:
+            book=book_collection.objects.create(username=name, book_name=objs)
+            return explore(request)
     return redirect('/explore')
 
 def pdf(request):
-    print(45)
     if request.method=="POST":
-        print(1)
         name=request.POST['book']
-        print(name)
         pdf=book_store.objects.filter(book_name=name)
-        print(pdf)
         return render(request, 'pdf.html', {'books': pdf})
 
     return redirect('/explore')
